@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-//import { PersonFormComponent } from './addperson-form/person-form.component';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
-//import { FooterComponent } from './footer/footer.component';
+//import { HeaderComponent } from './header/header.component';
+//import { DashboardComponent } from './dashboard/dashboard.component';
+import { NavigationComponent } from './navigation/navigation.component';
 @Component({
     selector: 'app-root',
-    imports: [  RouterModule,HeaderComponent],
+    imports: [  RouterModule, NavigationComponent,],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })

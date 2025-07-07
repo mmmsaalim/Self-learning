@@ -1,9 +1,13 @@
-<header class="header">
-  <h1>Person Management App</h1>
-  <nav class="nav-links">
-    <!--<a routerLink="/home">Home</a>-->
-    <a routerLink="/person-form">Add Person</a>
-    <!--<a routerLink="/person-form-view">View Persons</a>-->
-  </nav>
-</header>
 
+  <mat-toolbar color="primary" class="header">
+    <button mat-icon-button (click)="menuClicked.emit()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="title">Person Management App</span>
+
+    <nav class="nav-links">
+      <a mat-button routerLink="/person-form">Add Person</a>
+      <a mat-button routerLink="/person-form">Add Person</a>
+    </nav>
+  </mat-toolbar>
+<mat-divider></mat-divider>

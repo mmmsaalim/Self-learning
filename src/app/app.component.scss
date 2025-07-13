@@ -1,0 +1,24 @@
+.sidenav-container {
+  height: 100vh; /* full height */
+}
+
+.sidenav {
+  width: 240px;
+}
+
+.main-content {
+  padding: 16px;
+  height: calc(100vh - 64px); /* Adjust this if your header height is different */
+  overflow: auto;
+}
+
+mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+}
+
+app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}

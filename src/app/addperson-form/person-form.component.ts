@@ -47,6 +47,7 @@ export class PersonFormComponent {
     });
   }
 
+
   onSubmit() {
     if (this.personForm.invalid) {
       this.errorMessage = 'Please fill all required fields.';
@@ -57,12 +58,14 @@ export class PersonFormComponent {
     const formData: Person = this.personForm.value;
 
     this.personService.createPerson(formData).subscribe({
-      next: () => {
+      next: (savedperson) => {
         this.successMessage = 'Data saved successfully!';
         this.errorMessage = '';
-        this.personForm.reset();
+        this.personForm.patchValue(savedperson);
+        this.personForm.disable();
         setTimeout(() => {
           this.successMessage = '';
+          this.router.navigate(['/person-list']);
         }, 3000);
       },
       error: () => {
@@ -72,6 +75,6 @@ export class PersonFormComponent {
     });
   }
   onCancel() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/person-list']);
   }
 }

@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Person } from '../addperson-form/person-form.component';
 
@@ -13,6 +13,10 @@ private apiUrl = 'http://localhost:3000/person';
 
    createPerson(data: Person): Observable<Person> {
     return this.http.post<Person>(this.apiUrl, data);
+  }
+
+  getAllPersons(){
+    return this.http.get<Person[]>(this.apiUrl);
   }
 }
 

@@ -2,7 +2,6 @@
   <form [formGroup]="personForm" (ngSubmit)="onSubmit()">
     <h2>Personal Details</h2>
 
-
     <label>
       Name:
       <input type="text" formControlName="name" />
@@ -36,9 +35,9 @@
     </div>
 
     <div class="button-group">
-  <button type="submit" class="submit-btn">Submit</button>
-  <button type="button" class="cancel-btn" (click)="onCancel()">Cancel</button>
-</div>
+      <button type="submit" class="submit-btn">Submit</button>
+      <button type="button" class="cancel-btn" (click)="onCancel()">Cancel</button>
+    </div>
   </form>
 
   <p *ngIf="successMessage" class="success">{{ successMessage }}</p>

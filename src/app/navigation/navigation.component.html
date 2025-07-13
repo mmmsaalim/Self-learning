@@ -1,26 +1,11 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="side" class="sidenav" [(opened)]="isSidenavOpened">
-    <mat-nav-list>
-      <a mat-list-item routerLink="/dashboard" routerLinkActiv="active-link">
-        <span class="nav-link-content">
-            <mat-icon>dashboard</mat-icon>
-            <span class="nav-text">Dashboard</span>
-        </span>
-        </a>
-      <a mat-list-item routerLink="/person-form">
-        <span class="nav-link-content">
-            <mat-icon>person</mat-icon>
-            <span class="nav-text">Persons</span>
-        </span>
-      </a>
-    </mat-nav-list>
-  </mat-sidenav>
+<mat-nav-list>
+  <a mat-list-item routerLink="/dashboard" routerLinkActive="active-link">
+    <mat-icon>dashboard</mat-icon>
+    <span class="nav-text">Dashboard</span>
+  </a>
 
-  <mat-sidenav-content>
-    <app-header (menuClicked)="sidenav.toggle()"></app-header>
-    <div class="main-content">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
+  <a mat-list-item routerLink="/person-list" routerLinkActive="active-link">
+    <mat-icon>person</mat-icon>
+    <span class="nav-text">Persons list</span>
+  </a>
+</mat-nav-list>

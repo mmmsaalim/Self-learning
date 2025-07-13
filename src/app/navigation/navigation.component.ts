@@ -6,12 +6,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from '../header/header.component';
 @Component({
   selector: 'app-navigation',
   standalone: true,
     imports: [
-      HeaderComponent,
       CommonModule,
       RouterModule,
       MatSidenavModule,
@@ -24,5 +22,5 @@ import { HeaderComponent } from '../header/header.component';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
- isSidenavOpened = true;
+
 }

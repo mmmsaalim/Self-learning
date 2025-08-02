@@ -14,6 +14,9 @@ private apiUrl = 'http://localhost:3000/person';
    createPerson(data: Person): Observable<Person> {
     return this.http.post<Person>(this.apiUrl, data);
   }
+  getPersonById(id: number): Observable<Person> {
+    return this.http.get<Person>(`${this.apiUrl}/${id}`);
+  }
 
   getAllPersons(){
     return this.http.get<Person[]>(this.apiUrl);

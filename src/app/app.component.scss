@@ -1,14 +1,16 @@
 .sidenav-container {
-  height: 100vh; /* full height */
+  height: 100vh;
+  background-color: white;
 }
 
 .sidenav {
   width: 240px;
+  background-color: darkgray;
 }
 
 .main-content {
   padding: 16px;
-  height: calc(100vh - 64px); /* Adjust this if your header height is different */
+  height: calc(100vh - 64px);
   overflow: auto;
 }
 

@@ -6,7 +6,7 @@
       Name:
       <input type="text" formControlName="name" />
     </label>
-    <div *ngIf="personForm.get('name')?.invalid && personForm.get('name')?.touched" class="error">
+    <div *ngIf="isValid('name')" class="error">
       Name is required
     </div>
 
@@ -14,7 +14,7 @@
       Age:
       <input type="number" formControlName="age" />
     </label>
-    <div *ngIf="personForm.get('age')?.invalid && personForm.get('age')?.touched" class="error">
+    <div *ngIf="isValid('age')" class="error">
       Age is required
     </div>
 
@@ -22,7 +22,7 @@
       Address:
       <input type="text" formControlName="address" />
     </label>
-    <div *ngIf="personForm.get('address')?.invalid && personForm.get('address')?.touched" class="error">
+    <div *ngIf="isValid('address')" class="error">
       Address is required
     </div>
 
@@ -30,12 +30,12 @@
       Phone No:
       <input type="number" formControlName="phone_no" />
     </label>
-    <div *ngIf="personForm.get('phone_no')?.invalid && personForm.get('phone_no')?.touched" class="error">
+    <div *ngIf="isValid('phone_no')" class="error">
       Phone No is required
     </div>
 
     <div class="button-group">
-      <button type="submit" class="submit-btn">Submit</button>
+      <button type="submit" class="submit-btn" [disabled]="isViewMode">Submit</button>
       <button type="button" class="cancel-btn" (click)="onCancel()">Cancel</button>
     </div>
   </form>

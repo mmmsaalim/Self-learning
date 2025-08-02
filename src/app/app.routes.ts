@@ -14,6 +14,10 @@ export const routes: Routes = [
     { path: 'person-form',
         component: PersonFormComponent
     },
+    {
+    path: 'person-form/view/:id',
+    component: PersonFormComponent
+    },
     {path : 'person-list',
         component: PersonListComponent,
         resolve: {persons: personResolver},

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PersonService } from '../services/person.service';
 
 export interface Person {
   id: number;
@@ -12,18 +14,52 @@ export interface Person {
 @Component({
   selector: 'app-person-list',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [MatTableModule,MatPaginatorModule],
   templateUrl: './person-list.component.html',
   styleUrl: './person-list.component.scss'
 })
-export class PersonListComponent {
+export class PersonListComponent  implements AfterViewInit {
 
   displayedColumns: string[] = ['id', 'name', 'age', 'address', 'phone_no'];
-  dataSource: Person[] = [];
+ dataSource = new MatTableDataSource<Person>([]);
 
-  constructor(private rout:ActivatedRoute,private router:Router){
-  this.dataSource= this.rout.snapshot.data['persons'];
+
+ totalRecords = 0;
+
+   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  constructor(
+    private rout:ActivatedRoute,
+    private router:Router,
+    private personService: PersonService){
  }
+
+  ngOnInit() {
+    // Load initial data from resolver or fallback to API call
+    const resolvedData = this.rout.snapshot.data['persons'];
+    if (resolvedData) {
+      this.dataSource.data = resolvedData.data;
+      this.totalRecords = resolvedData.total;
+    } else {
+      this.loadPersons(0, 5);
+    }
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+
+    // Listen for paginator changes and load new data
+    this.paginator.page.subscribe(() => {
+      this.loadPersons(this.paginator.pageIndex, this.paginator.pageSize);
+    });
+  }
+
+  loadPersons(pageIndex: number, pageSize: number) {
+    this.personService.getPersons(pageIndex, pageSize).subscribe(res => {
+      this.dataSource.data = res.data;
+      this.totalRecords = res.total;
+    });
+  }
 
   goToAddPerson() {
     this.router.navigate(['/person-form']);

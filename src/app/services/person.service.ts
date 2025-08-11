@@ -15,8 +15,10 @@ private apiUrl = 'http://localhost:3000/person';
     return this.http.post<Person>(this.apiUrl, data);
   }
 
-  getAllPersons(){
-    return this.http.get<Person[]>(this.apiUrl);
+getPersons(pageIndex: number, pageSize: number): Observable<{ data: Person[], total: number }> {
+    return this.http.get<{ data: Person[], total: number }>(
+      `${this.apiUrl}?page=${pageIndex}&size=${pageSize}`
+    );
   }
 }
 
